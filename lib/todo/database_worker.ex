@@ -5,6 +5,7 @@ defmodule Todo.DatabaseWorker do
     GenServer.start(__MODULE__, db_folder)
   end
 
+  @spec store(atom | pid | {atom, any} | {:via, atom, any}, any, any) :: :ok
   def store(worker_pid, key, data) do
     GenServer.cast(worker_pid, {:store, key, data})
   end
